@@ -1,0 +1,14 @@
+hazelcast:
+  instance:
+    hazelcast-instance-name: your-cluster-name
+  network:
+    join:
+      multicast:
+        enabled: false
+      tcp-ip:
+        enabled: true
+        members:
+          - 127.0.0.1
+  map:
+    idempotencyMap:
+      time-to-live-seconds: 3600 # Set the time-to-live for map entries (adjust as needed)
