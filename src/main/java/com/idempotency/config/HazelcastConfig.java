@@ -4,12 +4,13 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePropertySource;
-
+@Slf4j
 @Configuration
 @RequiredArgsConstructor
 public class HazelcastConfig {
@@ -29,6 +30,7 @@ public class HazelcastConfig {
             }
         } catch (Exception e) {
             // Handle the exception (e.g., log it) if the YAML file is not found or there is an error loading it.
+            log.info("No property file found");
         }
 
         return Hazelcast.newHazelcastInstance(config);
